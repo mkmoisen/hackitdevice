@@ -5,6 +5,8 @@ from config import FRAMEWORK_URL
 from config import FRAMEWORK_PUSH
 url = FRAMEWORK_URL + FRAMEWORK_PUSH
 device_uuid = 'abcdefg'
+import requests.packages.urllib3
+requests.packages.urllib3.disable_warnings()
 from datetime import datetime
 import json
 def start():
