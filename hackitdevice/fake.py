@@ -1,9 +1,9 @@
 __author__ = 'mmoisen'
 import time
 import requests
-framework_url = 'http://127.0.0.1:5000'
-framework_push = '/hackit/device/payload/post/'
-url = framework_url + framework_push
+from config import FRAMEWORK_URL
+from config import FRAMEWORK_PUSH
+url = FRAMEWORK_URL + FRAMEWORK_PUSH
 device_uuid = 'abcdefg'
 from datetime import datetime
 import json
