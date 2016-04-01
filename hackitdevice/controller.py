@@ -29,6 +29,6 @@ def start():
         dt = datetime.now().strftime('%Y-%m-%dT%H:%M:%S')
         headers = {'Content-Type': 'application/json'}
         data = json.dumps({"uuid": device_uuid, "payload": {"temperature": temp, 'dt': dt}})
-        r = requests.post(url, data, headers=headers)
+        r = requests.post(url, data, headers=headers, verify=False)
 
         print r.json()
