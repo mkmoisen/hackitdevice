@@ -5,6 +5,8 @@ app = Flask(__name__)
 
 from models import Heater
 
+relay = Heater(23)
+
 @app.route("/home")
 def home():
     return "haii"
@@ -12,7 +14,7 @@ def home():
 @app.route("/lamp/")
 def lamp():
     try:
-        relay = Heater(23)
+
         print "is it on?", relay.is_on
         if relay.is_on:
             relay.turn_off()
