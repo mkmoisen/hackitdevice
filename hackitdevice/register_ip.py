@@ -5,7 +5,15 @@ from config import FRAMEWORK_URL, DEVICE_UUID
 import json
 
 url = FRAMEWORK_URL + '/hackit/device/ip/'
-ip = sys.argv[1]
+
+if len(sys.argv) > 1:
+    ip = sys.argv[1]
+else:
+    import socket
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.connect(("gmail.com",80))
+    ip = s.getsockname()[0]
+    s.close()
 
 ip += ':5000'
 headers = {'Content-Type': 'application/json'}
