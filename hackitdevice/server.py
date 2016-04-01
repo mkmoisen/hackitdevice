@@ -1,5 +1,5 @@
 __author__ = 'mmoisen'
-from flask import Flask
+from flask import Flask, jsonify
 
 app = Flask(__name__)
 
@@ -11,11 +11,17 @@ def home():
 
 @app.route("/lamp/")
 def lamp():
-    relay = Heater(23)
-    if relay.is_on:
-        relay.turn_off()
-    else:
-        relay.turn_on()
+    try:
+        relay = Heater(23)
+        if relay.is_on:
+            relay.turn_off()
+        else:
+            relay.turn_on()
+    except Exception as ex:
+        print "Exception: ", ex.message
+        return jsonify({"success": False}), 200
+
+    return jsonify({"success": True}), 200
 
 def start():
     app.run(host='0.0.0.0', port=5000, debug=True)
