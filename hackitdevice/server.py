@@ -11,7 +11,7 @@ def home():
 
 @app.route("/lamp/")
 def lamp():
-    relay = Heater(17)
+    relay = Heater(23)
     if relay.is_on:
         relay.turn_off()
     else:
