@@ -13,6 +13,7 @@ def home():
 def lamp():
     try:
         relay = Heater(23)
+        print "is it on?", relay.is_on
         if relay.is_on:
             relay.turn_off()
         else:
